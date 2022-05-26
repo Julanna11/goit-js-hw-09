@@ -5,7 +5,8 @@ import "flatpickr/dist/flatpickr.min.css";
 
 
 const refs = {
-    startBtn: document.querySelector('button[data-start]'),
+    startBtn: document.querySelector('[data-start]'),
+    input: document.querySelector('#datetime-picker'),
     days: document.querySelector('[data-days]'),
     hours: document.querySelector('[data-hours]'),
     minutes: document.querySelector('[data-minutes]'),
@@ -40,7 +41,7 @@ function checkDate(time){
         refs.startBtn.setAttribute('disabled', true);
         return;
     } else {
-        refs.startBtn.removeAttribute('disabled');
+        refs.startBtn.removeAttribute('disabled', true);
     }    
 };
 
@@ -92,5 +93,7 @@ function addLeadingZero(value) {
 };
 
 refs.startBtn.addEventListener('click', () => {
-intervalID = setInterval(timer, 1000);
+    intervalID = setInterval(timer, 1000);
+    refs.startBtn.disabled = true;
+    refs.input.disabled = true;
 });
