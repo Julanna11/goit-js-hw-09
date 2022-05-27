@@ -46,16 +46,14 @@ function checkDate(time){
 };
 
 function timer() {
-    const resultTime = selectUsersDates - options.defaultDate;
+    const resultTime = selectUsersDates - Date.now();
     const time = convertMs(resultTime);
     if (resultTime > 0) {
         updateComponentsTimer(time);
-    } else
-    {
+    } else {
         clearInterval(intervalID);
     }
-    console.log(time);
-}
+};
 
 function updateComponentsTimer({ days, hours, minutes, seconds }){
     refs.days.innerHTML = days;
